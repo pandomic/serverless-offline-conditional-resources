@@ -1,4 +1,4 @@
-![](https://travis-ci.org/pandomic/serverless-offline-variables.svg?branch=master)
+![](https://travis-ci.org/pandomic/serverless-offline-conditional-resources.svg?branch=master)
 
 # serverless-offline-conditional-resources
 
