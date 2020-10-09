@@ -17,17 +17,22 @@ class ServerlessOfflineConditionalResources implements Plugin {
 
 
   private onHook() {
-    this.serverless.service.resources.Outputs =
+    if (this.serverless.service.resources) {
+      this.serverless.service.resources.Outputs =
       this.replaceResources(this.serverless.service.resources.Outputs);
 
-    this.serverless.service.resources.Resources =
-      this.replaceResources(this.serverless.service.resources.Resources) as CloudFormationResources;
+      this.serverless.service.resources.Resources =
+        this.replaceResources(this.serverless.service.resources.Resources) as CloudFormationResources;
+    }
 
     this.serverless.service.functions =
       this.replaceResources(this.serverless.service.functions) as { [name: string]: FunctionDefinition };
 
     this.serverless.service.provider.stackTags =
       (this.replaceResources({ tags: this.serverless.service.provider.stackTags }) as { tags: { [key: string]: string } | undefined })?.tags;
+
+    this.serverless.service.provider.vpc =
+      (this.replaceResources({ vpc: this.serverless.service.provider.vpc }) as { vpc?: unknown })?.vpc;
   }
 
   private replaceResources(resources?: { [name: string]: unknown }) {

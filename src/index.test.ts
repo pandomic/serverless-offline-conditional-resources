@@ -20,6 +20,11 @@ const createServerless = (): ServerlessType => ({
       }
     },
     provider: {
+      vpc: {
+        stages: ['dev', 'staging', 'prod'],
+        subnetIds: ['1', '2', '3'],
+        securityGroupIds: ['1', '2', '3'],
+      },
       stackTags: {
         // @ts-ignore
         stages: ['dev', 'staging', 'prod'],
@@ -99,4 +104,5 @@ test('removes resources which do not match active stage', async () => {
   });
 
   expect(serverless.service.provider.stackTags).toEqual(undefined);
+  expect(serverless.service.provider.vpc).toEqual(undefined);
 });

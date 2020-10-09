@@ -45,6 +45,12 @@ provider:
       - prod
       - staging
     MY_TAG: tag-one
+  vpc:
+    stages:
+      - dev
+      - prod
+      - staging
+    ...
 functions:
   ...
   my-function:

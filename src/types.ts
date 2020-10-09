@@ -7,7 +7,7 @@ export { CloudFormationResources } from "serverless/plugins/aws/provider/awsProv
 export type Serverless = ServerlessType & {
   service: {
     functions: { [name: string]: ServerlessType.FunctionDefinition },
-    provider: { stackTags?: { [key: string]: string } },
+    provider: { stackTags?: { [key: string]: string }, vpc: unknown },
     resources: Resources
   },
 }
