@@ -57,6 +57,12 @@ functions:
     stages:
       - dev
       - production
+layers:
+  ...
+  my-layer:
+    stages:
+      - dev
+      - production
 resources:
   Outputs:
     MyCoolOutput:

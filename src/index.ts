@@ -28,6 +28,9 @@ class ServerlessOfflineConditionalResources implements Plugin {
     this.serverless.service.functions =
       this.replaceResources(this.serverless.service.functions) as { [name: string]: FunctionDefinition };
 
+    this.serverless.service.layers =
+      this.replaceResources(this.serverless.service.layers) as { [name: string]: unknown };
+
     this.serverless.service.provider.stackTags =
       (this.replaceResources({ tags: this.serverless.service.provider.stackTags }) as { tags: { [key: string]: string } | undefined })?.tags;
 
